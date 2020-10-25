@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var viewer = new PhotoSphereViewer({
+            panorama: $('#p' + p_id).find('li:first-child').find('img').attr('data-src'), //全景图片的路径
+            container: document.getElementById('showImg'),　　//承载全景图的div盒子
+            cache_texture: 15000,
+            default_long: '-46', //初始经度，介于0和2π之间
+            default_lat: '0',  //初始纬度，介于-π/ 2和π/ 2之间。
+            min_fov: 30,    //最小视野（对应于最大变焦），介于1和179之间。
+            max_fov: 90,    //最大视野（对应于最小变焦），介于1和179之间。
+            default_fov: 90,
+            time_anim: true,   //全景图在time_anim毫秒后会自动进行动画 可以填写数字
+            fisheye: false,
+            navbar: [
+                'autorotate',
+                'zoom',
+                'gyroscope',
+                'caption',
+                'markers',
+                //{     //自定义按钮
+                //    id: 'my-button',
+                //    title: 'Hello world',
+                //    className: 'custom-button',
+                //    content: 'Custom',
+                //    onClick: function() {
+                //        alert('Hello from custom button');
+                //    }
+                //},
+            ],
+            size: {      // Resize the panorama
+                width: '100%',
+                height: '100%'
+            },
+            gyroscope: true,
+            loading_txt: 'Loading.....',  //    显示在加载圆的中心的图像的路径。
+            markers: null,
+            usexmpdata: true,
+            pano_data: {    //在此示例中，4000x2000图像用作6000x3000全景图的一部分，剩余空间将呈现为黑色。
+                full_width: 6000,
+                full_height: 3000,
+                cropped_width: 4000,
+                cropped_height: 2000,
+                cropped_x: 1000,
+                cropped_y: 500
+            },
+            transition: {
+                duration: 1500, // duration of transition in milliseconds
+                loader: true // should display the loader ?
+            }
+        });
+    </script>
+</body>
+
+</html>

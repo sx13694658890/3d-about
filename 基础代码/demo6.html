@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script src="../three.js "></script>
+    <script src="../SceneUtils.js"></script>
+   
+    <script>
+         var scene=new THREE.Scene()
+         
+       // scene.overrideMaterial=new THREE.MeshDepthMaterial()  //深度材质
+
+        //  var camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,50,530)
+        //  camera.position.set(-60,150,50);
+        //  camera.lookAt(scene.position)
+         var camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,.1,1000)
+         camera.position.set(-60,60,50);
+         camera.lookAt(scene.position)
+         var renderer=new THREE.WebGLRenderer()
+         renderer.setClearColor(new THREE.Color(0x000000,))
+         renderer.setSize(window.innerWidth,window.innerHeight)
+         renderer.shadowMap.Enabled=true
+
+        // var planeGeometry=new THREE.PlaneGeometry(70,70,1,1)
+        //  var  plane=new THREE.Mesh(planeGeometry,new THREE.MeshBasicMaterial({color:0x777777}))
+        //  plane.rotation.x=-.5*Math.PI
+        //  plane.position.set(0,0,0)
+        //  scene.add(plane)
+        
+
+        // 基础材质
+        //  var  cube=new THREE.Mesh(new THREE.CubeGeometry(15,15,15),new THREE.MeshBasicMaterial({color:0xfff00}))
+        //  cube.position.set(-20,10,20)
+        //  scene.add(cube)
+        
+        // 法向材质
+        // var  cube=new THREE.Mesh(new THREE.CubeGeometry(15,15,15),new THREE.MeshNormalMaterial({color:0xfff00}))
+        //  cube.position.set(-20,10,20)
+        //  scene.add(cube)
+        
+         //网格面材质 MeshFaceMaterial 目前这个已经被删除了
+        //  var mates=[
+        //      new THREE.MeshBasicMaterial({color:0x009e60}),
+        //      new THREE.MeshBasicMaterial({color:0x0f3460}),
+        //      new THREE.MeshBasicMaterial({color:0x223367}),
+        //      new THREE.MeshBasicMaterial({color:0xca8144}),
+        //      new THREE.MeshBasicMaterial({color:0xdd1760}),
+        //      new THREE.MeshBasicMaterial({color:0xaa4460}),
+        //  ]
+        //  var faceMaterial=new THREE.MeshFaceMaterial(mates)
+        //  var  cube=new THREE.Mesh(new THREE.CubeGeometry(15,15,15),faceMaterial)
+        //  cube.position.set(-20,10,20)
+        //  scene.add(cube)
+
+         // 高级材质 MeshPhongMaterial
+          var  cube=new THREE.Mesh(new THREE.CubeGeometry(15,15,15),new THREE.MeshPhongMaterial({color:0x0e3432,emissive:0x0e3432,}))
+         cube.position.set(-20,10,20)
+         scene.add(cube)
+        // function addCube(){
+        //     var cubeSize=1+Math.random()*5
+        //     var colorMaterial=new THREE.MeshBasicMaterial({
+        //         color:0x44ff45,
+        //         transparent:true,
+        //         blending:THREE.MultiplyBlending
+        //     })
+        //     // 混合材质
+        //     var  cubedepth=new THREE.SceneUtils.createMultiMaterialObject(new THREE.CubeGeometry(cubeSize,cubeSize,cubeSize),[new THREE.MeshDepthMaterial(),colorMaterial])
+           
+        //  cubedepth.position.set(Math.round(Math.random()*60),Math.round(Math.random()*60),Math.round(Math.random()*60))
+        //  cubedepth.castShadow=true
+        // //  cubedepth.children[1].scale.set(0.99,.99,.99)
+        //  scene.add(cubedepth)
+        // }
+        // for(var i=0;i<100;i++){
+        //     addCube()
+        // }
+
+        //  var  sphere=new THREE.Mesh(new THREE.SphereGeometry(10,20,20),new THREE.MeshBasicMaterial({color:0xfff00,wireframe:true}))
+        //  sphere.position.set(10,20,20)
+        //  sphere.castShadow=true
+        //  scene.add(sphere)
+
+         var ambient=new THREE.AmbientLight(0xffffff)
+         scene.add(ambient)
+         var spot=new THREE.SpotLight(0xff4501)
+         spot.position.set(-40,50,-50)
+         spot.castShadow=true
+         scene.add(spot)
+
+         render()
+         function render(){
+            // cube.rotation.y+=0.02
+            // cube.rotation.z+=0.03
+            // cube.rotation.x+=0.04
+            // sphere.rotation.y+=0.005
+            renderer.render(scene,camera)
+            requestAnimationFrame(render)
+            scene.traverse(e=>{
+             
+                if(e instanceof THREE.Mesh){
+                    e.rotation.x+=0.02
+                    e.rotation.y+=0.02
+                    e.rotation.z+=0.02
+                }
+            })
+           
+         }
+
+        
+         document.body.appendChild(renderer.domElement)
+    </script>
+</body>
+</html>
