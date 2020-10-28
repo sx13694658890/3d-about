@@ -1,0 +1,28 @@
+{
+  "name": "study3d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Lensflare.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sx13694658890/3d-about.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sx13694658890/3d-about/issues"
+  },
+  "homepage": "https://github.com/sx13694658890/3d-about#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.14",
+    "nodemon": "^2.0.6",
+    "request": "^2.88.2"
+  }
+}

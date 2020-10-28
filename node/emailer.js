@@ -11,9 +11,9 @@ const nodemailer=require('nodemailer')
     })
 
    transporter.sendMail({
-         from:'sxl13694658890@163.com',
+         from:'sxl',
          to:"1632241215@qq.com",
-         subject:"163",
+         subject:"技术支持",
          text:"您的验证码是:999999,五分钟内有效",
     },(err,data)=>{
         console.log(err)
